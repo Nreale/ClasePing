@@ -9,10 +9,13 @@ echo 4. Monitoreo Continuo
 echo 5. Definir Cantidad de Paquetes
 echo 6. Prueba de Carga
 echo 7. Resolución de Nombres
-echo 8. Salir
+echo 8. IPconfig
+echo 9. Nslookup
+echo 10. Tracert
+echo 11. Salir
 echo =========================================
 
-set /p opcion=Elige una opcion (1-8):
+set /p opcion=Elige una opcion (1-11):
 
 if %opcion%==1 goto MostrarPing
 if %opcion%==2 goto ObtenerIP
@@ -21,7 +24,10 @@ if %opcion%==4 goto Infinito
 if %opcion%==5 goto Cantidad
 if %opcion%==6 goto opcion6
 if %opcion%==7 goto opcion7
-if %opcion%==8 goto Salir
+if %opcion%==8 goto 1Ipconfig
+if %opcion%==9 goto 1nslookup
+if %opcion%==10 goto 1tracert
+if %opcion%==11 goto Salir
 
 :MostrarPing
 ping 127.0.0.1
@@ -61,6 +67,23 @@ goto INICIO
 :opcion7
 set /p Dominio=Ingrese una IP:
 ping %Dominio% -a
+pause
+goto INICIO
+
+:1Ipconfig
+IPconfig
+pause
+goto INICIO
+
+:1nslookup
+set /p Dominio=Ingrese una IP:
+Nslookup %Dominio%
+pause
+goto INICIO
+
+:1tracert
+set /p Dominio=Ingrese una IP:
+Tracert %Dominio%
 pause
 goto INICIO
 
